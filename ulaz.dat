@@ -2,5 +2,6 @@
 (1,1) (3,1) (4,4) (2,4) # Paralelogram
 (0,1) (1,1) (1,0) (0,0) # Kvadrat
 (-2,1) (3,0) (2,5) (-3,6) # Robm
+(0,0) (6,0) (6,3) (0,3) # Pravokutnik
 (0,0) (2,2) (0,4) (0,5) # Nekonveksni
 # Kraj datoteke

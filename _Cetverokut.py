@@ -18,10 +18,12 @@ class Cetverokut:
     def klasifikacija(self):
         tipovi = []
 
-        if self.jel_paralelogram():
-            tipovi.append("Paralelogram")
         if self.jel_konveksni():
             tipovi.append("Konveksni")
+        if self.jel_pravokutnik():
+            tipovi.append("Pravokutnik")
+        if self.jel_paralelogram():
+            tipovi.append("Paralelogram")
         if self.jel_romb():
             tipovi.append("Romb")
         if self.jeli_kvadrat():
@@ -32,13 +34,24 @@ class Cetverokut:
             tipovi.append("Tangencijalni cetverokut")
         return tipovi
 
+    def jel_pravokutnik(self):
+        ab = Vektor(self.A, self.B)
+        bc = Vektor(self.B, self.C)
+        cd = Vektor(self.C, self.D)
+        da = Vektor(self.D, self.A)
+
+        if ab.length() == cd.length() and bc.length() == da.length() and ab.angle_with(bc) == math.pi / 2:
+            return True
+        else:
+            return False
+
     def jel_paralelogram(self):
         ab = Vektor(self.A, self.B)
         dc = Vektor(self.D, self.C)
         ad = Vektor(self.A, self.D)
         bc = Vektor(self.B, self.C)
 
-        if ab == dc and ad == bc and ab.length() != bc.length():
+        if ab == dc and ad == bc and ab.angle_with(bc) != math.pi / 2:
             return True
         else:
             return False
