@@ -1,10 +1,10 @@
-def get_input_arrays(file_Path):
+def get_input_arrays(file_path):
     inputs = []
-    with open(file_Path, "r") as lines:
+    with open(file_path, "r") as lines:
         for line in lines:
-            if (line.find("#") != -1):
+            if line.find("#") != -1:
                 line = line[:line.find("#")]
-            if (len(line)>0):
+            if len(line) > 0:
                 line = line.strip()
                 line = line.replace("(", "")
                 line = line.replace(")", "")

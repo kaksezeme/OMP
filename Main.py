@@ -13,4 +13,4 @@ for kordinata in tocke:
 
 
 for cetverokut in cetverokuti:
-    print(cetverokut)
+    print(cetverokut.klasifikacija())
