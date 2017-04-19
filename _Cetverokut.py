@@ -1,19 +1,20 @@
 from _Vektor import *
 
-class Cetverokut:
-    A = None
-    B = None
-    C = None
-    D = None
 
-    def __init__(self, A, B, C, D):
-        self.A = A
-        self.B = B
-        self.C = C
-        self.D = D
+class Cetverokut:
+    a = None
+    b = None
+    c = None
+    d = None
+
+    def __init__(self, a, b, c, d):
+        self.a = a
+        self.b = b
+        self.c = c
+        self.d = d
 
     def __str__(self):
-        return "A" + str(self.A) + " B" + str(self.B) + " C" + str(self.C) + " D" + str(self.D)
+        return "A" + str(self.a) + " B" + str(self.b) + " C" + str(self.c) + " D" + str(self.d)
 
     def klasifikacija(self):
         tipovi = []
@@ -37,10 +38,10 @@ class Cetverokut:
         return tipovi
 
     def jel_pravokutnik(self):
-        ab = Vektor(self.A, self.B)
-        bc = Vektor(self.B, self.C)
-        cd = Vektor(self.C, self.D)
-        da = Vektor(self.D, self.A)
+        ab = Vektor(self.a, self.b)
+        bc = Vektor(self.b, self.c)
+        cd = Vektor(self.c, self.d)
+        da = Vektor(self.d, self.a)
 
         if ab.length() == cd.length() and bc.length() == da.length() and ab.angle_with(bc) == math.pi / 2:
             return True
@@ -48,26 +49,25 @@ class Cetverokut:
             return False
 
     def jel_paralelogram(self):
-        ab = Vektor(self.A, self.B)
-        dc = Vektor(self.D, self.C)
-        ad = Vektor(self.A, self.D)
-        bc = Vektor(self.B, self.C)
+        ab = Vektor(self.a, self.b)
+        dc = Vektor(self.d, self.c)
+        ad = Vektor(self.a, self.d)
+        bc = Vektor(self.b, self.c)
 
         if ab == dc and ad == bc and ab.angle_with(bc) != math.pi / 2:
             return True
         else:
             return False
 
-
     def jel_konveksni(self):
-        v1 = Vektor(self.A, self.B)
-        v2 = Vektor(self.A, self.D)
-        v3 = Vektor(self.B, self.A)
-        v4 = Vektor(self.B, self.C)
-        v5 = Vektor(self.C, self.B)
-        v6 = Vektor(self.C, self.D)
-        v7 = Vektor(self.D, self.C)
-        v8 = Vektor(self.D, self.A)
+        v1 = Vektor(self.a, self.b)
+        v2 = Vektor(self.a, self.d)
+        v3 = Vektor(self.b, self.a)
+        v4 = Vektor(self.b, self.c)
+        v5 = Vektor(self.c, self.b)
+        v6 = Vektor(self.c, self.d)
+        v7 = Vektor(self.d, self.c)
+        v8 = Vektor(self.d, self.a)
         zbroj = v1.angle_with(v2) + v3.angle_with(v4) + v5.angle_with(v6) + v7.angle_with(v8)
         if zbroj == 2 * math.pi:
             return True
@@ -81,17 +81,17 @@ class Cetverokut:
             return True
 
     def jel_romb(self):
-        ab = Vektor(self.A, self.B)
-        dc = Vektor(self.D, self.C)
-        ad = Vektor(self.A, self.D)
-        bc = Vektor(self.B, self.C)
-        sjeciste_dijagonala = self.A.mid(self.C)
+        ab = Vektor(self.a, self.b)
+        dc = Vektor(self.d, self.c)
+        ad = Vektor(self.a, self.d)
+        bc = Vektor(self.b, self.c)
+        sjeciste_dijagonala = self.a.mid(self.c)
 
-        v5 = Vektor(sjeciste_dijagonala, self.A)
-        v6 = Vektor(sjeciste_dijagonala, self.D)
+        v5 = Vektor(sjeciste_dijagonala, self.a)
+        v6 = Vektor(sjeciste_dijagonala, self.d)
 
-        dijagonala1 = Vektor(self.A, self.C)
-        dijagonala2 = Vektor(self.B, self.D)
+        dijagonala1 = Vektor(self.a, self.c)
+        dijagonala2 = Vektor(self.b, self.d)
 
         if ab == dc and ad == bc and ab.length() == ad.length() and v5.angle_with(v6) == math.pi / 2 \
                 and dijagonala1.length() != dijagonala2.length():
@@ -100,10 +100,10 @@ class Cetverokut:
             return False
 
     def jeli_kvadrat(self):
-        ba = Vektor(self.B, self.A)
-        cd = Vektor(self.C, self.D)
-        bc = Vektor(self.B, self.C)
-        ac = Vektor(self.A, self.C)
+        ba = Vektor(self.b, self.a)
+        cd = Vektor(self.c, self.d)
+        bc = Vektor(self.b, self.c)
+        ac = Vektor(self.a, self.c)
 
         dijagonala = ba.length() * math.sqrt(2)
 
@@ -112,16 +112,15 @@ class Cetverokut:
         else:
             return False
 
-
     def jel_tetivni(self):
-        kut_a = Vektor(self.A, self.B).angle_with(Vektor(self.A, self.D))
-        kut_c = Vektor(self.C, self.B).angle_with(Vektor(self.C, self.D))
+        kut_a = Vektor(self.a, self.b).angle_with(Vektor(self.a, self.d))
+        kut_c = Vektor(self.c, self.b).angle_with(Vektor(self.c, self.d))
 
         if kut_a + kut_c != math.pi:
             return False
 
-        kut_b = Vektor(self.B, self.A).angle_with(Vektor(self.B, self.C))
-        kut_d = Vektor(self.D, self.A).angle_with(Vektor(self.D, self.C))
+        kut_b = Vektor(self.b, self.a).angle_with(Vektor(self.b, self.c))
+        kut_d = Vektor(self.d, self.a).angle_with(Vektor(self.d, self.c))
 
         if kut_b + kut_d != math.pi:
             return False
@@ -129,8 +128,8 @@ class Cetverokut:
         return True
 
     def jel_tangencijalni(self):
-        if (Vektor(self.A, self.B).length() + Vektor(self.D, self.C).length()) == \
-                (Vektor(self.A, self.D).length() + Vektor(self.B, self.C).length()):
+        if (Vektor(self.a, self.b).length() + Vektor(self.d, self.c).length()) == \
+                (Vektor(self.a, self.d).length() + Vektor(self.b, self.c).length()):
             return True
         else:
             return False
