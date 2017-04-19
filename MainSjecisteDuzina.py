@@ -1,8 +1,8 @@
 from _Duzina import Duzina
 from _Tocka import Tocka
-#(1,1) (3,1) (4,4) (2,4)
-a = Duzina(Tocka(0, 5), Tocka(3, 0))
-b = Duzina(Tocka(0, 2), Tocka(3, 2))
+
+a = Duzina(Tocka(3, 3), Tocka(1, 1))
+b = Duzina(Tocka(4, 2), Tocka(-2, 6))
 
 
 s = a.get_sjeciste(b)
