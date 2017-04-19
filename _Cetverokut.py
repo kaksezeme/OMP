@@ -20,6 +20,8 @@ class Cetverokut:
 
         if self.jel_konveksni():
             tipovi.append("Konveksni")
+        if self.jel_konkavni():
+            tipovi.append("Konkavni")
         if self.jel_pravokutnik():
             tipovi.append("Pravokutnik")
         if self.jel_paralelogram():
@@ -71,6 +73,12 @@ class Cetverokut:
             return True
 
         return False
+
+    def jel_konkavni(self):
+        if self.jel_konveksni():
+            return False
+        else:
+            return True
 
     def jel_romb(self):
         ab = Vektor(self.A, self.B)
