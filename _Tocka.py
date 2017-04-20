@@ -15,7 +15,7 @@ class Tocka:
         return Tocka(x_mid, y_mid, z_mid)
 
     def __eq__(self, other):
-        if other == None:
+        if other is None:
             return False
         return self.x == other.x and self.y == other.y and self.z == other.z
 

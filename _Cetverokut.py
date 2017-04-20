@@ -1,4 +1,5 @@
 from _Vektor import *
+from _Duzina import *
 
 
 class Cetverokut:
@@ -23,6 +24,10 @@ class Cetverokut:
             tipovi.append("Konveksni")
         if self.jel_konkavni():
             tipovi.append("Konkavni")
+        if self.jel_slozen():
+            tipovi.append("Slozeni")
+        if self.jel_jednostavan():
+            tipovi.append("Jednostavan")
         if self.jel_pravokutnik():
             tipovi.append("Pravokutnik")
         if self.jel_paralelogram():
@@ -36,6 +41,23 @@ class Cetverokut:
         if self.jel_tangencijalni():
             tipovi.append("Tangencijalni cetverokut")
         return tipovi
+
+    def jel_slozen(self):
+        ab = Duzina(self.a, self.b)
+        dc = Duzina(self.d, self.c)
+        ad = Duzina(self.a, self.d)
+        bc = Duzina(self.b, self.c)
+
+        if ab.get_sjeciste_s_duzinom(dc) is not None or ad.get_sjeciste_s_duzinom(bc) is not None:
+            return True
+        else:
+            return False
+
+    def jel_jednostavan(self):
+        if self.jel_slozen():
+            return False
+        else:
+            return True
 
     def jel_pravokutnik(self):
         ab = Vektor.from_tocke(self.a, self.b)

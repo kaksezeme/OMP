@@ -11,7 +11,16 @@ class Duzina:
         self.a = a
         self.b = b
 
-    def get_sjeciste(self, druga_duzina):
+    @classmethod
+    def from_list(cls, l):
+        a = Tocka(l[0], l[1])
+        b = Tocka(l[2], l[3])
+        return cls(a, b)
+
+    def __str__(self):
+        return "A(" + str(self.a.x) + ", " + str(self.a.y) + ", " + str(self.a.z) +") "
+
+    def get_sjeciste_s_duzinom(self, druga_duzina):
         vektor_smjera_1 = Vektor.from_tocke(self.a, self.b)
         vektor_smjera_2 = Vektor.from_tocke(druga_duzina.a, druga_duzina.b)
 
@@ -26,7 +35,7 @@ class Duzina:
         kof1 = self.get_koeficjent(v1, vektor_smjera_1)
         kof2 = self.get_koeficjent(v2, vektor_smjera_2)
 
-        if kof1 >= 0 and kof1 <= 1 and kof2 >= 0 and kof2 <= 1:
+        if 0 <= kof1 <= 1 and  0 <= kof2 <= 1:
             return tocka_presjeka
         else:
             return None

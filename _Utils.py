@@ -1,7 +1,9 @@
 def get_input_arrays(file_path):
     inputs = []
+    i = 0
     with open(file_path, "r") as lines:
         for line in lines:
+            i = i + 1
             if line.find("#") != -1:
                 line = line[:line.find("#")]
             if len(line) > 0:
@@ -18,6 +20,6 @@ def get_input_arrays(file_path):
                         print("Nisu uneseni brojevi")
                         continue
                 else:
-                    print("Unos je u krivome formatu")
+                    print("Unos je u krivome formatu linija [" + str(i) + "]")
                     continue
     return inputs

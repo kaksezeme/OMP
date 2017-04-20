@@ -1,12 +1,15 @@
 from _Duzina import Duzina
-from _Tocka import Tocka
-
-a = Duzina(Tocka(3, 3), Tocka(1, 1))
-b = Duzina(Tocka(4, 2), Tocka(-2, 6))
+from _Utils import *
 
 
-s = a.get_sjeciste(b)
-if (s != None):
-    print("Sjeku se u ", s)
-else:
-    print("Ne sjeku se")
+tocke = get_input_arrays("ulazDuzine.dat")
+
+for t in tocke:
+    ab = Duzina.from_list(t[:4])
+    cd = Duzina.from_list(t[4:])
+
+    s = ab.get_sjeciste_s_duzinom(cd)
+    if s is not None:
+        print("Sjeku se u ", s)
+    else:
+        print("Ne sjeku se")
