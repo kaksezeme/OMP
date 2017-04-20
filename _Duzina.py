@@ -1,3 +1,4 @@
+import math
 import numpy as np
 from _Vektor import Vektor
 from _Tocka import Tocka
@@ -19,6 +20,9 @@ class Duzina:
 
     def __str__(self):
         return "A(" + str(self.a.x) + ", " + str(self.a.y) + ", " + str(self.a.z) +") "
+
+    def length(self):
+        return Vektor.from_tocke(self.a, self.b).length()
 
     def get_sjeciste_s_duzinom(self, druga_duzina):
         vektor_smjera_1 = Vektor.from_tocke(self.a, self.b)

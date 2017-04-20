@@ -17,7 +17,15 @@ class Cetverokut:
     def __str__(self):
         return "A" + str(self.a) + " B" + str(self.b) + " C" + str(self.c) + " D" + str(self.d)
 
+    def postoje_iste_tocke(self):
+        return self.a == self.b or self.a == self.c \
+               or self.a == self.d or self.b == self.c \
+               or self.b == self.d or self.c == self.d
+
     def klasifikacija(self):
+        if self.postoje_iste_tocke():
+            return ["Cetverokut nema 4 razlicite tocke"]
+
         tipovi = []
 
         if self.jel_konveksni():
@@ -28,6 +36,10 @@ class Cetverokut:
             tipovi.append("Slozeni")
         if self.jel_jednostavan():
             tipovi.append("Jednostavan")
+        if self.jel_deltoid():
+            tipovi.append("Deltoid")
+        if self.jel_trapez():
+            tipovi.append("Trapez")
         if self.jel_pravokutnik():
             tipovi.append("Pravokutnik")
         if self.jel_paralelogram():
@@ -41,6 +53,58 @@ class Cetverokut:
         if self.jel_tangencijalni():
             tipovi.append("Tangencijalni cetverokut")
         return tipovi
+
+    def jel_deltoid(self):
+        if self.jel_tangencijalni() is not True:
+            return False
+
+        d_ac = Duzina(self.a, self.c)
+        d_bd = Duzina(self.b, self.d)
+
+        sjeciste_dijagonala = d_ac.get_sjeciste_s_duzinom(d_bd)
+
+        v1 = Vektor.from_tocke(sjeciste_dijagonala, self.a)
+        v2 = Vektor.from_tocke(sjeciste_dijagonala, self.b)
+
+        if round(v1.angle_with(v2), 5) != round(math.pi / 2, 5):
+            return False
+
+        if d_ac.length() > d_ac.length():
+            v_ab = Vektor.from_tocke(self.a, self.b)
+            v_ad = Vektor.from_tocke(self.a, self.d)
+            v_cb = Vektor.from_tocke(self.c, self.d)
+            v_cd = Vektor.from_tocke(self.c, self.d)
+
+            if v_ab.length() == v_ad.length() and v_cb.length() == v_cd.length():
+                return True
+        else:
+            v_da = Vektor.from_tocke(self.a, self.b)
+            v_dc = Vektor.from_tocke(self.a, self.d)
+            v_ba = Vektor.from_tocke(self.c, self.d)
+            v_bc = Vektor.from_tocke(self.c, self.d)
+
+            if v_da.length() == v_dc.length() and v_ba.length() == v_bc.length():
+                return True
+
+
+        return False
+
+
+
+    def jel_trapez(self):
+        ab = Vektor.from_tocke(self.a, self.b)
+        dc = Vektor.from_tocke(self.d, self.c)
+        ad = Vektor.from_tocke(self.a, self.d)
+        bc = Vektor.from_tocke(self.b, self.c)
+
+        if ab.paralel_with(dc) and ad.paralel_with(bc) == False:
+            return True
+
+        if ad.paralel_with(bc) and ab.paralel_with(dc) == False:
+            return True
+
+        return False
+
 
     def jel_slozen(self):
         ab = Duzina(self.a, self.b)
@@ -90,6 +154,7 @@ class Cetverokut:
         v6 = Vektor.from_tocke(self.c, self.d)
         v7 = Vektor.from_tocke(self.d, self.c)
         v8 = Vektor.from_tocke(self.d, self.a)
+
         zbroj = v1.angle_with(v2) + v3.angle_with(v4) + v5.angle_with(v6) + v7.angle_with(v8)
         if zbroj == 2 * math.pi:
             return True
