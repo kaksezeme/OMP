@@ -96,19 +96,19 @@ class Cetverokut:
         if round(v1.angle_with(v2), 5) != round(math.pi / 2, 5):
             return False
 
-        if d_ac.length() > d_ac.length():
+        if d_ac.length() > d_bd.length():
             v_ab = Vektor.from_tocke(self.a, self.b)
             v_ad = Vektor.from_tocke(self.a, self.d)
-            v_cb = Vektor.from_tocke(self.c, self.d)
+            v_cb = Vektor.from_tocke(self.c, self.b)
             v_cd = Vektor.from_tocke(self.c, self.d)
 
             if v_ab.length() == v_ad.length() and v_cb.length() == v_cd.length():
                 return True
         else:
-            v_da = Vektor.from_tocke(self.a, self.b)
-            v_dc = Vektor.from_tocke(self.a, self.d)
-            v_ba = Vektor.from_tocke(self.c, self.d)
-            v_bc = Vektor.from_tocke(self.c, self.d)
+            v_da = Vektor.from_tocke(self.d, self.a)
+            v_dc = Vektor.from_tocke(self.d, self.c)
+            v_ba = Vektor.from_tocke(self.b, self.a)
+            v_bc = Vektor.from_tocke(self.b, self.c)
 
             if v_da.length() == v_dc.length() and v_ba.length() == v_bc.length():
                 return True
