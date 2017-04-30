@@ -1,7 +1,8 @@
 # Neki komentar
-(3,3) (1,1) (4,2) (-2,6) # Sjeku se
+(2,4) (8,4) (4,3.99) (6,2) # Ne sjeku se
+(2,4) (8,4) (4,2) (5.986,3.753) # Ne sjeku se
 (2,4) (4,2) (4,4) (6,2) # Paralelne
 (2,4) (4,2) (4,6) (6,2) # Ne sjeku se
 (2,4) (8,4) (4,4) (6,2) # Sjeku se
-(2,4) (8,4) (4,3.99) (6,2) # Ne sjeku se
+(3,3) (1,1) (4,2) (-2,6) # Sjeku se
 # Kraj datoteke

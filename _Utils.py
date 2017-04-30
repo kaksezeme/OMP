@@ -1,4 +1,11 @@
 def get_input_arrays(file_path):
+    """
+    Dohvacanje podataka iz datoteke u formatu (x1,y1) (x2,y2) (x3,y3) (x4,y4)
+    Podaci iza # se ne uzimaju u obzir i predstavljaju komentar unutar datoteke
+    :param file_path: putanja do dadoteke u kojoj se nalaze tocke
+    :return: array - lista kordinata jednog unosta
+    :except ValueError - Ako jedan od {x1,y1,x2,y2,x3,y3,x4,y4} nije broj
+    """
     inputs = []
     i = 0
     with open(file_path, "r") as lines:

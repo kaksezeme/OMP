@@ -10,7 +10,9 @@ for kordinata in tocke:
                                   Tocka(kordinata[2], kordinata[3]),
                                   Tocka(kordinata[4], kordinata[5]),
                                   Tocka(kordinata[6], kordinata[7])))
-
+print("")
 
 for cetverokut in cetverokuti:
     print(cetverokut.klasifikacija())
+
+print("")
