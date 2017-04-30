@@ -49,30 +49,36 @@ class Cetverokut:
 
         tipovi = []
 
-        if self.jel_konveksni():
-            tipovi.append("Konveksni")
-        if self.jel_konkavni():
-            tipovi.append("Konkavni")
-        if self.jel_slozen():
-            tipovi.append("Slozeni")
-        if self.jel_jednostavan():
-            tipovi.append("Jednostavan")
-        if self.jel_deltoid():
-            tipovi.append("Deltoid")
-        if self.jel_trapez():
-            tipovi.append("Trapez")
-        if self.jel_pravokutnik():
-            tipovi.append("Pravokutnik")
-        if self.jel_paralelogram():
-            tipovi.append("Paralelogram")
-        if self.jel_romb():
-            tipovi.append("Romb")
-        if self.jeli_kvadrat():
-            tipovi.append("Kvadrat")
-        if self.jel_tetivni():
-            tipovi.append("Tetivni cetverokut")
-        if self.jel_tangencijalni():
-            tipovi.append("Tangencijalni cetverokut")
+        try:
+
+            if self.jel_konveksni():
+                tipovi.append("Konveksni")
+            else:
+                tipovi.append("Konkavni")
+
+
+            if self.jel_slozen():
+                tipovi.append("Slozeni")
+            else:
+                tipovi.append("Jednostavan")
+                if self.jel_deltoid():
+                    tipovi.append("Deltoid")
+                if self.jel_trapez():
+                    tipovi.append("Trapez")
+                if self.jel_pravokutnik():
+                    tipovi.append("Pravokutnik")
+                if self.jel_paralelogram():
+                    tipovi.append("Paralelogram")
+                if self.jel_romb():
+                    tipovi.append("Romb")
+                if self.jeli_kvadrat():
+                    tipovi.append("Kvadrat")
+                if self.jel_tetivni():
+                    tipovi.append("Tetivni cetverokut")
+                if self.jel_tangencijalni():
+                    tipovi.append("Tangencijalni cetverokut")
+        except ValueError:
+            return ["Neispravan cetverokut"]
         return tipovi
 
     def jel_deltoid(self):
