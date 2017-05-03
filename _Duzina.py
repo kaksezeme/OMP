@@ -45,6 +45,8 @@ class Duzina:
         vektor_smjera_1 = Vektor.from_tocke(self.a, self.b)
         vektor_smjera_2 = Vektor.from_tocke(druga_duzina.a, druga_duzina.b)
 
+        if not self.je_li_komplanarna_s(druga_duzina):
+            return None
         if vektor_smjera_1.paralel_with(vektor_smjera_2):
             return None
 
@@ -64,12 +66,24 @@ class Duzina:
         else:
             return None
 
+    def je_li_komplanarna_s(self, druga_duzina):
+        v1 = Vektor.from_tocke(self.a, self.b)
+        v2 = Vektor.from_tocke(druga_duzina.a, druga_duzina.b)
+
+        a = np.array([[self.a.x - druga_duzina.a.x, self.a.y - druga_duzina.a.y, self.a.z - druga_duzina.a.z],
+                      [v1.x, v1.y, v1.z],
+                      [v2.x, v2.y, v2.z]])
+        det = np.linalg.det(a)
+
+        return det == 0
+
     def get_tocka_presjeka(self, vektor_smjera_1, vektor_smjera_2, druga_duzina):
         """
         :param vektor_smjera_1: vektor smjera pravca na kojem se nalazi trenutna duzina 
         :param vektor_smjera_2: vektor smjera pravca na kojem se nalazi druga duzina
         :param druga_duzina: druga duzina 
         :return: Tocka koja predstavlja tocku presjeka trenutne duzine i druge duzine
+        Rjesavanje sustava parametarskih jednadbi pravaca
         """
         a = [[vektor_smjera_1.x, -vektor_smjera_2.x],
              [vektor_smjera_1.y, -vektor_smjera_2.y],

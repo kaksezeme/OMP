@@ -56,7 +56,6 @@ class Cetverokut:
             else:
                 tipovi.append("Konkavni")
 
-
             if self.jel_slozen():
                 tipovi.append("Slozeni")
             else:
@@ -233,7 +232,7 @@ class Cetverokut:
     def jel_romb(self):
         """
         Provjerava je li trenutni cetverokut romb. duljine susjednih stranica mora biti jednake duljine, a dijagonale
-        se sjeku pod 90 stupnjeva.
+        se sjeku pod 90 stupnjeva i nisu jednake duljine.
         :return: bool: True - cetverokut je romb; False - cetverokut nije romb
         """
         ab = Vektor.from_tocke(self.a, self.b)
