@@ -60,18 +60,18 @@ class Cetverokut:
                 tipovi.append("Slozeni")
             else:
                 tipovi.append("Jednostavan")
-                if self.jel_deltoid():
-                    tipovi.append("Deltoid")
                 if self.jel_trapez():
                     tipovi.append("Trapez")
-                if self.jel_pravokutnik():
-                    tipovi.append("Pravokutnik")
-                if self.jel_paralelogram():
-                    tipovi.append("Paralelogram")
                 if self.jel_romb():
                     tipovi.append("Romb")
                 if self.jeli_kvadrat():
                     tipovi.append("Kvadrat")
+                if self.jel_pravokutnik():
+                    tipovi.append("Pravokutnik")
+                if self.jel_paralelogram():
+                    tipovi.append("Paralelogram")
+                if self.jel_deltoid():
+                    tipovi.append("Deltoid")
                 if self.jel_tetivni():
                     tipovi.append("Tetivni cetverokut")
                 if self.jel_tangencijalni():
@@ -127,15 +127,16 @@ class Cetverokut:
         Tada vektori ab i dc ne smiju biti paralelni.
         :return:  bool: True - cetverokut je trapez; False - cetverokut nije trapez
         """
+
+        if self.jel_slozen():
+            return False
+
         ab = Vektor.from_tocke(self.a, self.b)
         dc = Vektor.from_tocke(self.d, self.c)
         ad = Vektor.from_tocke(self.a, self.d)
         bc = Vektor.from_tocke(self.b, self.c)
 
-        if ab.paralel_with(dc) and ad.paralel_with(bc) is False:
-            return True
-
-        if ad.paralel_with(bc) and ab.paralel_with(dc) is False:
+        if ab.paralel_with(dc) or ad.paralel_with(bc):
             return True
 
         return False
@@ -214,7 +215,7 @@ class Cetverokut:
         v8 = Vektor.from_tocke(self.d, self.a)
 
         zbroj = v1.angle_with(v2) + v3.angle_with(v4) + v5.angle_with(v6) + v7.angle_with(v8)
-        if zbroj == 2 * math.pi:
+        if round(zbroj,5) == round(2 * math.pi,5):
             return True
 
         return False
@@ -292,8 +293,12 @@ class Cetverokut:
         Provjerava je li trenutni cetverokut tangencijalni. Zbroj nasuprotnih strana mora biti jednake duljine.
         :return: bool: True - cetverokut je tangencijalni; False - cetverokut nije tangencijalni
         """
-        if (Vektor.from_tocke(self.a, self.b).length() + Vektor.from_tocke(self.d, self.c).length()) == \
-                (Vektor.from_tocke(self.a, self.d).length() + Vektor.from_tocke(self.b, self.c).length()):
+        ab = Vektor.from_tocke(self.a, self.b)
+        dc = Vektor.from_tocke(self.d, self.c)
+        ad = Vektor.from_tocke(self.a, self.d)
+        bc = Vektor.from_tocke(self.b, self.c)
+
+        if ((round(ab.length(),2) + round(dc.length(),2)) == (round(ad.length(),2) + round(bc.length(),2))):
             return True
         else:
             return False
