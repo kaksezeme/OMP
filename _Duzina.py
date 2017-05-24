@@ -45,15 +45,10 @@ class Duzina:
         vektor_smjera_1 = Vektor.from_tocke(self.a, self.b)
         vektor_smjera_2 = Vektor.from_tocke(druga_duzina.a, druga_duzina.b)
 
-        if not self.je_li_komplanarna_s(druga_duzina):
-            return None
         if vektor_smjera_1.paralel_with(vektor_smjera_2):
             return None
 
         tocka_presjeka = self.get_tocka_presjeka(vektor_smjera_1, vektor_smjera_2, druga_duzina)
-
-        if self.sjeciste_u_tockama_duzina(tocka_presjeka, druga_duzina):
-            return tocka_presjeka
 
         v1 = Vektor.from_tocke(self.a, tocka_presjeka)
         v2 = Vektor.from_tocke(druga_duzina.a, tocka_presjeka)
@@ -61,21 +56,10 @@ class Duzina:
         kof1 = self.get_koeficjent(v1, vektor_smjera_1)
         kof2 = self.get_koeficjent(v2, vektor_smjera_2)
 
-        if 0 < kof1 <= 1 and 0 < kof2 <= 1:
+        if 0 <= kof1 <= 1 and 0 <= kof2 <= 1:
             return tocka_presjeka
         else:
             return None
-
-    def je_li_komplanarna_s(self, druga_duzina):
-        v1 = Vektor.from_tocke(self.a, self.b)
-        v2 = Vektor.from_tocke(druga_duzina.a, druga_duzina.b)
-
-        a = np.array([[self.a.x - druga_duzina.a.x, self.a.y - druga_duzina.a.y, self.a.z - druga_duzina.a.z],
-                      [v1.x, v1.y, v1.z],
-                      [v2.x, v2.y, v2.z]])
-        det = np.linalg.det(a)
-
-        return det == 0
 
     def get_tocka_presjeka(self, vektor_smjera_1, vektor_smjera_2, druga_duzina):
         """
@@ -94,13 +78,6 @@ class Duzina:
 
         return Tocka(self.a.x + vektor_smjera_1.x * t, self.a.y + vektor_smjera_1.y * t,
                      self.a.z + vektor_smjera_1.z * t)
-
-    def sjeciste_u_tockama_duzina(self, tocka_presjeka, druga_duzina):
-        if tocka_presjeka == self.a or tocka_presjeka == self.b \
-                or tocka_presjeka == druga_duzina.a or tocka_presjeka == druga_duzina.b:
-            return True
-        else:
-            return False
 
     def get_koeficjent(self, v, s):
         """
