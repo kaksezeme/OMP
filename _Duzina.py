@@ -45,18 +45,19 @@ class Duzina:
         vektor_smjera_1 = Vektor.from_tocke(self.a, self.b)
         vektor_smjera_2 = Vektor.from_tocke(druga_duzina.a, druga_duzina.b)
 
-        if vektor_smjera_1.paralel_with(vektor_smjera_2):
-            return None
+
 
         tocka_presjeka = self.get_tocka_presjeka(vektor_smjera_1, vektor_smjera_2, druga_duzina)
 
         v1 = Vektor.from_tocke(self.a, tocka_presjeka)
         v2 = Vektor.from_tocke(druga_duzina.a, tocka_presjeka)
 
-        kof1 = self.get_koeficjent(v1, vektor_smjera_1)
-        kof2 = self.get_koeficjent(v2, vektor_smjera_2)
+        kof1 = round(self.get_koeficjent(v1, vektor_smjera_1), 2)
+        kof2 = round(self.get_koeficjent(v2, vektor_smjera_2), 2)
 
-        if 0 <= kof1 <= 1 and 0 <= kof2 <= 1:
+        print(kof1, kof2)
+
+        if (0 <= kof1 <= 1) and (0 <= kof2 <= 1):
             return tocka_presjeka
         else:
             return None

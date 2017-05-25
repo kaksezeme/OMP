@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 from _Duzina import Duzina
 from _Tocka import Tocka
+from _KoordinatniSustav import *
 
 def submit_button_click():
     try:
@@ -17,9 +18,16 @@ def submit_button_click():
             msg = "Duzine T1T2 i T3T4" + " se ne sjeku"
 
         messagebox.showinfo("Poruka", msg)
+        duzine = []
+        duzine.append(ab)
+        duzine.append(cd)
+        KoordinatniSustav(duzine)
+
+
     except ValueError:
         messagebox.showerror("Greška", "Nisu uneseni brojevi")
-
+    except Exception:
+        print("Iskljucen prozor")
 
 
 
