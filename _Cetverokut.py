@@ -128,9 +128,6 @@ class Cetverokut:
         :return:  bool: True - cetverokut je trapez; False - cetverokut nije trapez
         """
 
-        if self.jel_slozen():
-            return False
-
         ab = Vektor.from_tocke(self.a, self.b)
         dc = Vektor.from_tocke(self.d, self.c)
         ad = Vektor.from_tocke(self.a, self.d)
@@ -198,7 +195,7 @@ class Cetverokut:
         ad = Vektor.from_tocke(self.a, self.d)
         bc = Vektor.from_tocke(self.b, self.c)
 
-        if ab == dc and ad == bc and ab.angle_with(bc) != math.pi / 2:
+        if ab == dc and ad == bc:
             return True
         else:
             return False

@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 
 from _Cetverokut import Cetverokut
 from _Tocka import Tocka
@@ -10,10 +11,10 @@ def koja_vrsta(klasifikacija):
         return "Romb"
     if klasifikacija.__contains__("Kvadrat"):
         return "Kvadrat"
-    if klasifikacija.__contains__("Paralelogram"):
-        return "Paralelogram"
     if klasifikacija.__contains__("Pravokutnik"):
         return "Pravokutnik"
+    if klasifikacija.__contains__("Paralelogram"):
+        return "Paralelogram"
     if klasifikacija.__contains__("Deltoid"):
         return "Deltoid"
     if klasifikacija.__contains__("Trapez"):
@@ -28,24 +29,27 @@ def koja_vrsta(klasifikacija):
 
 
 def klasifikacija_button_click():
-    tocke = get_input_arrays(putanja_textbox.get())
-    cetverokuti = []
-    for kordinata in tocke:
-        cetverokuti.append(Cetverokut(Tocka(kordinata[0], kordinata[1]),
-                                      Tocka(kordinata[2], kordinata[3]),
-                                      Tocka(kordinata[4], kordinata[5]),
-                                      Tocka(kordinata[6], kordinata[7])))
-    index = 0
-    list_box.delete(0, END)
-    for cetverokut in cetverokuti:
-        ispis = ""
-        klasifikacije = cetverokut.klasifikacija()
-        for klasa in klasifikacije:
-            ispis = ispis + klasa + ", "
-        ispis = ispis[:-2]
-        list_box.insert(index, "Klasifikacija " + str(index+1) + ". četverokuta: "
-                        + ispis + "; Vrsta: " + koja_vrsta(klasifikacije))
-        index = index + 1
+    try:
+        tocke = get_input_arrays(putanja_textbox.get())
+        cetverokuti = []
+        for kordinata in tocke:
+            cetverokuti.append(Cetverokut(Tocka(kordinata[0], kordinata[1]),
+                                          Tocka(kordinata[2], kordinata[3]),
+                                          Tocka(kordinata[4], kordinata[5]),
+                                          Tocka(kordinata[6], kordinata[7])))
+        index = 0
+        list_box.delete(0, END)
+        for cetverokut in cetverokuti:
+            ispis = ""
+            klasifikacije = cetverokut.klasifikacija()
+            for klasa in klasifikacije:
+                ispis = ispis + klasa + ", "
+            ispis = ispis[:-2]
+            list_box.insert(index, "Klasifikacija " + str(index+1) + ". četverokuta: "
+                            + ispis + "; Vrsta: " + koja_vrsta(klasifikacije))
+            index = index + 1
+    except FileNotFoundError:
+        messagebox.showerror("Greška", "Datoteka ne postoji.")
 
 root = Tk()
 root.minsize(800, 560)
