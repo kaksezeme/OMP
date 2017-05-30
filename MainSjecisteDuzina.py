@@ -16,16 +16,16 @@ while(unosGreske):
     input_c = input("Unesite koordinate tocake C: ")
     input_d = input("Unesite koordinate tocake D: ")
 
-    input_a = input_a.replace("(","").replace(")","").replace(","," ").replace("  ", " ")
+    input_a = input_a.replace("(", "").replace(")", "").replace(",", " ").replace("  ", " ")
     input_a = input_a.split(" ")
 
-    input_b = input_b.replace("(","").replace(")","").replace(","," ").replace("  ", " ")
+    input_b = input_b.replace("(", "").replace(")", "").replace(",", " ").replace("  ", " ")
     input_b = input_b.split(" ")
 
-    input_c = input_c.replace("(","").replace(")","").replace(","," ").replace("  ", " ")
+    input_c = input_c.replace("(", "").replace(")", "").replace(",", " ").replace("  ", " ")
     input_c = input_c.split(" ")
 
-    input_d = input_d.replace("(","").replace(")","").replace(","," ").replace("  ", " ")
+    input_d = input_d.replace("(", "").replace(")", "").replace(",", " ").replace("  ", " ")
     input_d = input_d.split(" ")
 
     try:
@@ -39,7 +39,7 @@ while(unosGreske):
             print("Premali broj argumenata za tocku")
 
     except ValueError:
-        print("Greska nije unesen broj")
+        print("Greška nije unesen broj")
         unosGreske = True
 
     if len(input_a) == 2:
@@ -56,7 +56,7 @@ cd = Duzina(Tocka(input_c[0], input_c[1], input_c[2]), Tocka(input_d[0], input_d
 
 s = ab.get_sjeciste_s_duzinom(cd)
 if s is not None:
-    print("Duzine AB", ab, "i CD", cd, "se sjeku u", s)
+    print("Dužine AB", ab, "i CD", cd, "se sjeku u", s)
 else:
-    print("Duzine AB", ab, "i CD", cd, "se ne sjeku")
+    print("Dužine AB", ab, "i CD", cd, "se ne sjeku")
 print("")

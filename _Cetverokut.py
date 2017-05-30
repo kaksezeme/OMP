@@ -45,7 +45,7 @@ class Cetverokut:
         :return: list sve vrste cetverokuta kojima spada trenutni cetverokut na temelju klasifikacije
         """
         if self.postoje_iste_tocke():
-            return ["Cetverokut nema 4 razlicite tocke"]
+            return ["Četverokut nema 4 razlicite tocke"]
 
         tipovi = []
 
@@ -57,7 +57,7 @@ class Cetverokut:
                 tipovi.append("Konkavni")
 
             if self.jel_slozen():
-                tipovi.append("Slozeni")
+                tipovi.append("Složeni")
             else:
                 tipovi.append("Jednostavan")
                 if self.jel_trapez():
@@ -73,11 +73,11 @@ class Cetverokut:
                 if self.jel_deltoid():
                     tipovi.append("Deltoid")
                 if self.jel_tetivni():
-                    tipovi.append("Tetivni cetverokut")
+                    tipovi.append("Tetivni četverokut")
                 if self.jel_tangencijalni():
-                    tipovi.append("Tangencijalni cetverokut")
+                    tipovi.append("Tangencijalni četverokut")
         except ValueError:
-            return ["Neispravan cetverokut"]
+            return ["Neispravan četverokut"]
         return tipovi
 
     def jel_deltoid(self):
@@ -152,7 +152,11 @@ class Cetverokut:
         ad = Duzina(self.a, self.d)
         bc = Duzina(self.b, self.c)
 
-        if ab.get_sjeciste_s_duzinom(dc) is not None or ad.get_sjeciste_s_duzinom(bc) is not None:
+        s1 = ab.get_sjeciste_s_duzinom(dc)
+        s2 = ad.get_sjeciste_s_duzinom(bc)
+
+        if (s1 is not None and s1 != self.a and s1 != self.b and s1 != self.c and s1 != self.d) \
+                or (s2 is not None and s2 != self.a and s2 != self.b and s2 != self.c and s2 != self.d):
             return True
         else:
             return False
@@ -215,7 +219,7 @@ class Cetverokut:
         v8 = Vektor.from_tocke(self.d, self.a)
 
         zbroj = v1.angle_with(v2) + v3.angle_with(v4) + v5.angle_with(v6) + v7.angle_with(v8)
-        if round(zbroj,5) == round(2 * math.pi,5):
+        if round(zbroj, 5) == round(2 * math.pi, 5):
             return True
 
         return False
@@ -298,7 +302,7 @@ class Cetverokut:
         ad = Vektor.from_tocke(self.a, self.d)
         bc = Vektor.from_tocke(self.b, self.c)
 
-        if ((round(ab.length(),2) + round(dc.length(),2)) == (round(ad.length(),2) + round(bc.length(),2))):
+        if ((round(ab.length(), 2) + round(dc.length(), 2)) == (round(ad.length(), 2) + round(bc.length(), 2))):
             return True
         else:
             return False

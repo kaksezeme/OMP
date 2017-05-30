@@ -2,6 +2,7 @@ from _Cetverokut import Cetverokut
 from _Tocka import Tocka
 from _Utils import *
 
+
 def koja_vrsta(klasifikacija):
     if klasifikacija.__contains__("Romb"):
         return "Romb"
@@ -17,10 +18,9 @@ def koja_vrsta(klasifikacija):
         return "Trapez"
 
     vrsta = ""
-    if len(klasifikacija) <= 2:
-        for x in klasifikacija:
-            vrsta = vrsta + " " + x
-        return vrsta
+    for x in klasifikacija:
+        vrsta = vrsta + " " + x
+    return vrsta
 
 tocke = get_input_arrays("ulaz.dat")
 cetverokuti = []

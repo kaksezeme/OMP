@@ -3,24 +3,25 @@ from pygame.locals import *
 
 from _Tocka import Tocka
 
+
 CRNA = (0, 0, 0)
 BIJELA = (255, 255, 255)
 PLAVA = (0, 0, 255)
-ZUTA = (224,6,6)
+CRVENA = (224, 6, 6)
 ZELENA = (0, 250, 0)
+
 
 class KoordinatniSustav:
     iscrtavaj = True
     PROZOR = None
-    zoom = 25
     duzine = None
-    '''1024 x 750'''
+    '''1024 x 750 zoom 50'''
+    '''1920 x 180 zoom 80'''
 
+    zoom = 25
     sirina = 800
     visina = 600
-
     izvor = Tocka(sirina / 2, visina / 2)
-
 
     def __init__(self, duzine):
         pygame.init()
@@ -28,7 +29,6 @@ class KoordinatniSustav:
         pygame.display.set_caption('Koordinatni sustav')
         self.duzine = duzine
         self.prikazi_prozor()
-
 
     def postavi_koordinatni_sustav(self):
         self.PROZOR.fill(BIJELA)
@@ -39,11 +39,8 @@ class KoordinatniSustav:
         pygame.draw.line(self.PROZOR, ZELENA, (self.izvor.x, self.izvor.y), (self.izvor.x + i.x, self.izvor.y + i.y), 3)
         pygame.draw.line(self.PROZOR, ZELENA, (self.izvor.x, self.izvor.y), (self.izvor.x + j.x, self.izvor.y + j.y), 3)
 
-
-
     def kalibritaj_velicinu(self, tocka):
         return Tocka(tocka.x * self.zoom, -(tocka.y * self.zoom))
-
 
     def crtaj_liniju(self, t1, t2, boja):
         t1 = self.kalibritaj_velicinu(t1)
@@ -62,7 +59,7 @@ class KoordinatniSustav:
                 i = 0
                 for x in self.duzine:
                     if i / 2 == 0:
-                        self.crtaj_liniju(x.a, x.b, ZUTA)
+                        self.crtaj_liniju(x.a, x.b, CRVENA)
                     else:
                         self.crtaj_liniju(x.a, x.b, PLAVA)
                     i = i + 1

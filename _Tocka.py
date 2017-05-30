@@ -36,4 +36,4 @@ class Tocka:
         """
         :return: string - ispis trenutne tocke u kordinatama (x, y, z) 
         """
-        return "(" + str(self.x) + ", " + str(self.y) + ", " + str(self.z) + ")"
+        return "(" + str(self.x) + ", " + str(self.y) + ")"

@@ -1,6 +1,6 @@
-#OMP
+#OPM
 
-Projekt iz kolegija OMP
+Projekt iz kolegija OPM
 
 Članovi tima:
 1. Ana-Maria Ćurić

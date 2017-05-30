@@ -10,7 +10,7 @@ for t in tocke:
 
     s = ab.get_sjeciste_s_duzinom(cd)
     if s is not None:
-        print("Duzine AB", ab, "i CD", cd, "\tse sjeku u", s)
+        print("Dužine AB", ab, "i CD", cd, "\tse sjeku u", s)
     else:
-        print("Duzine AB", ab, "i CD", cd, "\tse ne sjeku")
+        print("Dužine AB", ab, "i CD", cd, "\tse ne sjeku")
 print("")

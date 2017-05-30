@@ -29,7 +29,7 @@ class Duzina:
         """
         :return: string ispis trenutne Duzine u kordinatama
         """
-        return "[(" + str(self.a.x) + ", " + str(self.a.y) + ", " + str(self.a.z) +")(" + str(self.b.x) + ", " + str(self.b.y) + ", " + str(self.b.z) + ")]"
+        return "[(" + str(self.a.x) + ", " + str(self.a.y) + ")(" + str(self.b.x) + ", " + str(self.b.y) + ")]"
 
     def length(self):
         """
@@ -45,8 +45,6 @@ class Duzina:
         vektor_smjera_1 = Vektor.from_tocke(self.a, self.b)
         vektor_smjera_2 = Vektor.from_tocke(druga_duzina.a, druga_duzina.b)
 
-
-
         tocka_presjeka = self.get_tocka_presjeka(vektor_smjera_1, vektor_smjera_2, druga_duzina)
 
         v1 = Vektor.from_tocke(self.a, tocka_presjeka)
@@ -54,8 +52,6 @@ class Duzina:
 
         kof1 = round(self.get_koeficjent(v1, vektor_smjera_1), 2)
         kof2 = round(self.get_koeficjent(v2, vektor_smjera_2), 2)
-
-        print(kof1, kof2)
 
         if (0 <= kof1 <= 1) and (0 <= kof2 <= 1):
             return tocka_presjeka

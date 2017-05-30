@@ -38,18 +38,17 @@ def klasifikacija_button_click():
     index = 0
     list_box.delete(0, END)
     for cetverokut in cetverokuti:
-        msg = ""
+        ispis = ""
         klasifikacije = cetverokut.klasifikacija()
         for klasa in klasifikacije:
-            msg = msg + klasa + ", "
-        msg = msg[:-3]
-        list_box.insert(index,"Klasifikacija " + str(index+1) + ". četverokuta: " + msg  + "; Vrsta:" + koja_vrsta(klasifikacije))
+            ispis = ispis + klasa + ", "
+        ispis = ispis[:-2]
+        list_box.insert(index, "Klasifikacija " + str(index+1) + ". četverokuta: "
+                        + ispis + "; Vrsta: " + koja_vrsta(klasifikacije))
         index = index + 1
 
-
-
 root = Tk()
-root.minsize(800,560);
+root.minsize(800, 560)
 root.wm_title('Klasifikacija četverokuta')
 
 ftop = Frame(root)
@@ -57,7 +56,7 @@ ftop.pack(side=TOP, fill=X)
 
 putanja_textbox = Entry(ftop)
 putanja_textbox.pack(side=LEFT, fill=Y)
-putanja_textbox.insert(0,"ulaz.dat")
+putanja_textbox.insert(0, "ulaz.dat")
 klasifikacija_button = Button(ftop, text="Klasificiraj", command=klasifikacija_button_click)
 klasifikacija_button.pack(side=LEFT)
 
